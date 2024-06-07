@@ -1,0 +1,131 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom , #043df8 30%, #000000 50%);
+}
+
+.fundo-diagonal {
+    display: flex;
+    align-items: center;
+}
+
+.navegacao {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+    justify-content: center; /* Espaçamento igual entre os botões */
+    padding: 20px 0; /* Espaçamento superior e inferior */
+}
+.botao {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    background-color: #043df8;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 10px;
+}
+.botao2 {
+    display: inline-block;
+    width: 150px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #043df8; /* Cor de fundo azul para os botões */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border: none; /* Remover borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+}
+
+.botao2:hover {
+    background-color: #0026b3; /* Cor de fundo mais escura ao passar o mouse */
+}
+
+.formulario {
+    width: 50%; /* Ajuste para definir a largura do formulário */
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    padding: 40px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas para o formulário */
+}
+
+.formulario input,
+.formulario textarea {
+    width: calc(100% - 20px); /* Ajuste para considerar o padding */
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bordas arredondadas para os campos de entrada */
+}
+
+#enviar {
+    width: 100%;
+    padding: 10px;
+    background-color: #45a049; /* Cor de fundo verde para o botão enviar */
+    color: white;
+    border: none;
+    border-radius: 4px; /* Bordas arredondadas para o botão */
+    cursor: pointer; /* Cursor em forma de mão ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+}
+
+#enviar:hover {
+    background-color: #367c39; /* Cor de fundo mais escura ao passar o mouse */
+}
+.pesquisa {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pesquisa input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pesquisa button {
+    padding: 10px;
+    background-color: #043df8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lista-clientes {
+    width: 100%;
+    padding: 20px;
+}
+
+.lista-clientes div {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-clientes div a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #043df8;
+}
+
+.lista-clientes div button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

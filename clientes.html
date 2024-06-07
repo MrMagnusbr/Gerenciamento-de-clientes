@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Página de Clientes</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="fundo-diagonal">
+        <div class="navegacao">
+            <a href="index.html" class="botao2">PAGINA INICIAL</a>
+            <a href="cadastrar.html" class="botao2">CADASTRAR</a>
+            <a href="#" class="botao2">CLIENTES</a>
+        </div>
+        <div class="pesquisa">
+            <input type="text" id="campoPesquisa" placeholder="PESQUISAR" onkeyup="filtrarClientes()" />
+            <button id="botaoPesquisa"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="lista-clientes">
+            <div id="guestList"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
