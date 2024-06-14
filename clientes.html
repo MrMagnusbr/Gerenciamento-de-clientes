@@ -4,21 +4,132 @@
     <meta charset="UTF-8" />
     <title>Página de Clientes</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #043df8 30%, #000000 50%);
+        }
+
+        .fundo-diagonal {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .navegacao {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px auto;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .botao2 {
+            display: inline-block;
+            width: 150px;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #043df8;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .botao2:hover {
+            background-color: #0026b3;
+        }
+
+        .pesquisa {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #campoPesquisa {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #botaoPesquisa {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-left: none;
+            background-color: #043df8;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .lista-clientes {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .cliente {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cliente .acoes {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cliente .acoes button,
+        .cliente .acoes i {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cliente .acoes .editar {
+            color: #043df8;
+        }
+
+        .cliente .acoes .deletar {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="fundo-diagonal">
         <div class="navegacao">
-            <a href="index.html" class="botao2">PAGINA INICIAL</a>
+            <a href="index.html" class="botao2">PÁGINA INICIAL</a>
             <a href="cadastrar.html" class="botao2">CADASTRAR</a>
-            <a href="#" class="botao2">CLIENTES</a>
+            <a href="clientes.html" class="botao2">CLIENTES</a>
         </div>
         <div class="pesquisa">
             <input type="text" id="campoPesquisa" placeholder="PESQUISAR" onkeyup="filtrarClientes()" />
             <button id="botaoPesquisa"><i class="fas fa-search"></i></button>
         </div>
-        <div class="lista-clientes">
-            <div id="guestList"></div>
-        </div>
+        <div class="lista-clientes" id="guestList"></div>
     </div>
     <script src="script.js"></script>
 </body>
