@@ -5,7 +5,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom , #043df8 30%, #000000 50%);
+    background: linear-gradient(to bottom, #043df8 30%, #000000 50%);
 }
 
 .fundo-diagonal {
@@ -20,7 +20,6 @@ html {
     max-width: 800px;
     margin: 40px auto;
 }
-
 .navegacao {
     text-align: center;
     display: flex;
@@ -30,8 +29,14 @@ html {
     justify-content: center;
     padding: 20px 0;
 }
-
+.navmenor{
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
 .botao2 {
+    text-align: center;
     display: inline-block;
     width: 150px;
     margin: 10px 0;
@@ -76,6 +81,16 @@ html {
     width: 100%;
     padding: 20px;
 }
+.icon-button {
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.icon-button img, .editar img, .deletar img {
+    width: 30px; /* Altura do ícone */
+    height: 30px; /* Altura do ícone */
+}
 
 .cliente {
     background-color: #fff;
@@ -84,4 +99,72 @@ html {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cliente .acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.cliente .acoes button,
+.cliente .acoes i {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cliente .acoes .editar {
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    background-color: #043df8;
+    border-radius: 30px;
+}
+
+.cliente .acoes .deletar {
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    background-color: red;
+    border-radius: 30px;
+}
+#enviar, #editar{
+    background-color: #4098d3; /* Cor de fundo do botão */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 4px; /* Arredondamento das bordas */
+    cursor: pointer; /* Mostrar cursor de mão ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+#enviar:hover, #editar:hover {
+    background-color: #1215d3; /* Cor de fundo alterada ao passar o mouse */
+    color: aliceblue;
+}
+#nome, #cpf, #endereco, #anotacoes, #novoValor, #campo {
+    width: 100%; /* Largura total do campo */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 10px; /* Espaçamento entre campos */
+    border: 1px solid #ccc; /* Borda do campo */
+    border-radius: 4px; /* Arredondamento das bordas */
+    box-sizing: border-box; /* Inclui a borda na largura total */
+}
+
+#nome {
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+#cpf {
+    font-size: 16px;
+}
+
+#endereco {
+    font-size: 16px;
+}
+
+#anotacoes {
+    font-size: 16px;
 }

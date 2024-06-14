@@ -54,14 +54,13 @@ class Cliente {
 
         const btnEditar = document.createElement("button");
         btnEditar.className = "editar";
-        btnEditar.innerHTML = "Editar";
         btnEditar.onclick = () => {
             window.location.href = `editar.html?cpf=${this.cpf}`;
         };
 
         const btnDeletar = document.createElement("button");
         btnDeletar.className = "deletar";
-        btnDeletar.innerHTML = "Deletar";
+        
         btnDeletar.onclick = () => {
             deletarCliente(this.cpf);
         };
@@ -72,6 +71,14 @@ class Cliente {
         elemento.appendChild(info);
         elemento.appendChild(acoes);
 
+        var imgedit = document.createElement('img');
+        imgedit.src = 'editicon.png';
+
+        var imgDel = document.createElement('img');
+        imgDel.src = 'deleteicon.png';
+
+        btnEditar.appendChild(imgedit)
+        btnDeletar.appendChild(imgDel)
         return elemento;
     }
 }
@@ -98,7 +105,7 @@ function cadastrarCliente() {
     const endereco = document.getElementById("endereco").value;
     const anotacoes = document.getElementById("anotacoes").value;
 
-    fetch("http://localhost/users/", {
+    fetch("http://localhost/Gerenciamento-de-clientes/users/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -135,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 function carregarClientes() {
-    fetch("http://localhost/users")
+    fetch("http://localhost/Gerenciamento-de-clientes/users")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Erro na rede");
@@ -167,7 +174,7 @@ function carregarClientes() {
 }
 
 function deletarCliente(cpf) {
-    fetch(`http://localhost/users`, {
+    fetch(`http://localhost/Gerenciamento-de-clientes/users`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -213,7 +220,7 @@ function enviarDadosEdicao() {
     body.cpf = cpf;
     body[campo] = novoValor;
 
-    fetch(`http://localhost/users`, {
+    fetch(`http://localhost/Gerenciamento-de-clientes/users`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

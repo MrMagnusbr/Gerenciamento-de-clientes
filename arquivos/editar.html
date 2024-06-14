@@ -13,17 +13,13 @@
             <a href="clientes.html" class="botao2">CLIENTES</a>
         </div>
         <div class="formulario">
-            <!-- Adicionando input oculto para capturar o CPF da URL -->
             <input type="hidden" id="cpfCliente" value="" />
-            <!-- Campo para selecionar o campo a ser editado -->
-            <select id="campo">
+            <select id="campo" required>
                 <option value="nome">Nome</option>
                 <option value="endereco">Endereço</option>
                 <option value="anotacoes">Anotações</option>
             </select>
-            <!-- Campo para inserir o novo valor -->
-            <input type="text" id="novoValor" placeholder="Novo valor" />
-            <!-- Botão para enviar os dados de edição -->
+            <input type="text" id="novoValor" placeholder="Novo valor" required />
             <button id="editar" onclick="enviarDadosEdicao()">EDITAR</button>
         </div>
     </div>
