@@ -1,2 +1,2 @@
 # Gerenciamento de clientes
- interface de sistema para um sistema de gerenciamento de usuario simples
+ sistema de gerenciamento e armazenamento de clientes com php
