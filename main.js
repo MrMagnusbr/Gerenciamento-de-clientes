@@ -5,6 +5,20 @@ const closeModal = () => {
     clearFields();
     document.getElementById("modal").classList.remove("active");
 };
+
+const openDetailsModal = (client) => {
+    document.getElementById("detailNome").textContent = client.nome;
+    document.getElementById("detailEmail").textContent = client.email;
+    document.getElementById("detailCelular").textContent = client.celular;
+    document.getElementById("detailCidade").textContent = client.cidade;
+    document.getElementById("detailCpf").textContent = client.cpf;
+    document.getElementById("detailEndereco").textContent = client.endereco;
+    document.getElementById("detailNotas").textContent = client.notas;
+    document.getElementById("detailsModal").classList.add("active");
+};
+
+const closeDetailsModal = () => document.getElementById("detailsModal").classList.remove("active");
+
 let indice = 0;
 
 function uniqueID() {
@@ -44,6 +58,7 @@ const readClient = () => {
             });
     });
 };
+
 const createClient = (client) => {
     const id = uniqueID();
     database
@@ -75,6 +90,9 @@ const saveClient = () => {
             email: document.getElementById("email").value,
             celular: document.getElementById("celular").value,
             cidade: document.getElementById("cidade").value,
+            cpf: document.getElementById("cpf").value,
+            endereco: document.getElementById("endereco").value,
+            notas: document.getElementById("notas").value,
         };
         const index = document.getElementById("nome").dataset.index;
         if (index == "new") {
@@ -87,6 +105,7 @@ const saveClient = () => {
     }
 };
 
+
 const createRow = (client) => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
@@ -97,6 +116,7 @@ const createRow = (client) => {
         <td>
             <button type="button" class="button green" id="edit-${client.index}">Editar</button>
             <button type="button" class="button red" id="delete-${client.index}">Excluir</button>
+            <button type="button" class="button white" id="moreInfo-${client.index}">Detalhes</button>
         </td>
     `;
     document.querySelector("#tableClient>tbody").appendChild(newRow);
@@ -121,6 +141,9 @@ const fillFields = (client) => {
     document.getElementById("email").value = client.email;
     document.getElementById("celular").value = client.celular;
     document.getElementById("cidade").value = client.cidade;
+    document.getElementById("cpf").value = client.cpf;
+    document.getElementById("endereco").value = client.endereco;
+    document.getElementById("notas").value = client.notas;
     document.getElementById("nome").dataset.index = client.index;
 };
 
@@ -150,6 +173,21 @@ const deleteClient = (id) => {
         .then(() => updateTable())
         .catch((error) => console.error("Erro ao deletar cliente: ", error));
 };
+
+const showDetails = (id) => {
+    console.log("Exibindo detalhes do cliente com ID:", id);
+    readClient()
+        .then((clients) => {
+            const client = clients.find((client) => client.index === id);
+            if (client) {
+                openDetailsModal(client);
+            } else {
+                console.error("Cliente não encontrado.");
+            }
+        })
+        .catch((error) => console.error("Erro ao ler clientes:", error));
+};
+
 const editDelete = (event) => {
     if (event.target.type === "button") {
         const [action, ...idParts] = event.target.id.split("-");
@@ -175,6 +213,8 @@ const editDelete = (event) => {
                 .catch((error) =>
                     console.error("Erro ao encontrar cliente para excluir:", error)
                 );
+        } else if (action === "moreInfo") {
+            showDetails(id);
         }
     }
 };
@@ -187,3 +227,5 @@ document.getElementById("modalClose").addEventListener("click", closeModal);
 document.getElementById("salvar").addEventListener("click", saveClient);
 document.querySelector("#tableClient>tbody").addEventListener("click", editDelete);
 document.getElementById("cancelar").addEventListener("click", closeModal);
+document.getElementById("detailsModalClose").addEventListener("click", closeDetailsModal);
+document.getElementById("detailsClose").addEventListener("click", closeDetailsModal);

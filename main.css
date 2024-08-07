@@ -85,32 +85,62 @@ footer {
     font-size: 0.875rem;
 }
 
-/* Estilos dos botões */
 .button {
     border: none;
     height: 40px;
-    padding: 6px 12px;
-    background-color: black;
+    padding: 10px 20px;
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    transition: box-shadow .6s ease;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos do modal de detalhes */
+.modal-body p {
+    margin: 10px 0;
 }
 
 .button.blue {
     background-color: #1FB6FF;
+    box-shadow: 0 4px 8px rgba(31, 182, 255, 0.2);
 }
 
 .button.green {
     background-color: #13CE66;
+    box-shadow: 0 4px 8px rgba(19, 206, 102, 0.2);
 }
 
 .button.red {
     background-color: #FF4949;
+    box-shadow: 0 4px 8px rgba(255, 73, 73, 0.2);
 }
 
 .button:hover {
-    box-shadow: inset 200px 0 0 #00000055;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button.white {
+    background-color: #FFFFFF;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button.white img {
+    filter: grayscale(100%);
+}
+
+.button.white:hover img {
+    filter: none;
 }
 
 @media (max-width: 480px) {
@@ -123,6 +153,7 @@ footer {
         position: fixed;
         top: 90vh;
         left: 80vw;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .button.mobile::before {
