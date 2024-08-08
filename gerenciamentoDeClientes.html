@@ -1,130 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="main.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
 
-        <title>CRUD</title>
-    </head>
+    <title>CRUD</title>
+  </head>
 
-    <body>
-        <header>
-            <h1 class="header-title">Cadastro de Clientes</h1>
-        </header>
-        <main>
-            <button type="button" class="button blue mobile" id="cadastrarCliente">
-                Cadastrar Cliente
-            </button>
-            <table id="tableClient" class="records">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Celular</th>
-                        <th>Cidade</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <div class="modal" id="modal">
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <h2>Novo Cliente</h2>
-                        <span class="modal-close" id="modalClose">&#10006;</span>
-                    </header>
-                    <form id="form" class="modal-form">
-                        <input
-                            type="text"
-                            id="nome"
-                            data-index="new"
-                            class="modal-field"
-                            placeholder="Nome do Cliente"
-                            required
-                        />
-                        <input
-                            type="email"
-                            id="email"
-                            class="modal-field"
-                            placeholder="e-mail do Cliente"
-                            required
-                        />
-                        <input
-                            type="text"
-                            id="celular"
-                            class="modal-field"
-                            placeholder="Celular do Cliente"
-                            required
-                        />
-                        <input
-                            type="text"
-                            id="cidade"
-                            class="modal-field"
-                            placeholder="Cidade do Cliente"
-                            required
-                        />
-                        <input
-                            type="text"
-                            id="cpf"
-                            class="modal-field"
-                            placeholder="CPF do Cliente"
-                        />
-                        <input
-                            type="text"
-                            id="endereco"
-                            class="modal-field"
-                            placeholder="Endereço do Cliente"
-                        />
-                        <input
-                            type="text"
-                            id="notas"
-                            class="modal-field"
-                            placeholder="Anotações sobre o Cliente"
-                        />
-                    </form>
+  <body>
+    <header>
+      <h1 class="header-title">Cadastro de Clientes</h1>
+    </header>
+    <main>
+      <button type="button" class="button blue mobile" id="cadastrarCliente">
+        Cadastrar Cliente
+      </button>
+      <table id="tableClient" class="records">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Celular</th>
+            <th>Cidade</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Novo Cliente</h2>
+            <span class="modal-close" id="modalClose">&#10006;</span>
+          </header>
+          <form id="form" class="modal-form">
+            <p>
+              Nome
+              <input
+                type="text"
+                id="nome"
+                data-index="new"
+                class="modal-field"
+                placeholder="Nome do Cliente"
+                required
+              />
+            </p>
+            <p>
+              Email
+              <input
+                type="email"
+                id="email"
+                class="modal-field"
+                placeholder="e-mail do Cliente"
+              />
+            </p>
+            <p>
+              Celular
+              <input
+                type="text"
+                id="celular"
+                class="modal-field"
+                placeholder="Celular do Cliente"
+              />
+            </p>
+            <p>
+              Cidade
+              <input
+                type="text"
+                id="cidade"
+                class="modal-field"
+                placeholder="Cidade do Cliente"
+                required
+              />
+            </p>
+            <p>
+              CPF
+              <input
+                type="text"
+                id="cpf"
+                class="modal-field"
+                placeholder="CPF do Cliente"
+                required
+              />
+            </p>
+            <p>
+              Endereço
+              <input
+                type="text"
+                id="endereco"
+                class="modal-field"
+                placeholder="ex: R Avelino Nascimento, 340"
+                required
+              />
+            </p>
+            <p>
+              Bairro
+              <input
+                type="text"
+                id="bairro"
+                class="modal-field"
+                placeholder="ex: Centro"
+                required
+              />
+            </p>
+            <p>
+              Anotações
+              <input
+                type="text"
+                id="notas"
+                class="modal-field"
+              />
+            </p>
+            <p>
+              Data de Nascimento
+              <input
+                type="date"
+                id="aniversario"
+                class="modal-field"
+              />
+            </p>
+          </form>
 
-                    <footer class="modal-footer">
-                        <button id="salvar" class="button green">Salvar</button>
-                        <button id="cancelar" class="button blue">Cancelar</button>
-                    </footer>
-                </div>
-            </div>
-            <div class="modal" id="detailsModal">
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <h2>Detalhes do Cliente</h2>
-                        <span class="modal-close" id="detailsModalClose">&#10006;</span>
-                    </header>
-                    <div class="modal-body">
-                        <p><strong>Nome:</strong> <span id="detailNome"></span></p>
-                        <p><strong>E-mail:</strong> <span id="detailEmail"></span></p>
-                        <p><strong>Celular:</strong> <span id="detailCelular"></span></p>
-                        <p><strong>Cidade:</strong> <span id="detailCidade"></span></p>
-                        <p><strong>CPF:</strong> <span id="detailCpf"></span></p>
-                        <p>
-                            <strong>Endereço:</strong> <span id="detailEndereco"></span>
-                        </p>
-                        <p><strong>Anotações:</strong> <span id="detailNotas"></span></p>
-                    </div>
-                    <footer class="modal-footer">
-                        <button id="detailsClose" class="button blue">Fechar</button>
-                    </footer>
-                </div>
-            </div>
-        </main>
-        <footer>Copyright &copy; Magnuxbr</footer>
+          <footer class="modal-footer">
+            <button id="salvar" class="button green">Salvar</button>
+            <button id="cancelar" class="button blue">Cancelar</button>
+          </footer>
+        </div>
+      </div>
+      <div class="modal" id="detailsModal">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Detalhes do Cliente</h2>
+            <span class="modal-close" id="detailsModalClose">&#10006;</span>
+          </header>
+          <div class="modal-body">
+            <p><strong>Nome:</strong> <span id="detailNome"></span></p>
+            <p><strong>Contato:</strong> <span id="detailContato"></span></p>
+            <p>
+              <strong>Nascimento:</strong> <span id="detailNascimento"></span>
+            </p>
+            <p>
+              <strong>Cidade/Estado:</strong> <span id="detailCidade"></span>
+            </p>
+            <p><strong>CPF:</strong> <span id="detailCpf"></span></p>
+            <p><strong>Endereço:</strong> <span id="detailEndereco"></span></p>
+            <p><strong>Bairro:</strong> <span id="detailNotas"></span></p>
+            <p><strong>Anotações:</strong> <span id="detailNotas"></span></p>
+          </div>
+          <footer class="modal-footer">
+            <button id="detailsClose" class="button blue">Fechar</button>
+          </footer>
+        </div>
+      </div>
+    </main>
+    <footer>Copyright &copy; Magnuxbr</footer>
 
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-        <script src="firebase-config.js"></script>
-        <script src="main.js"></script>
-    </body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

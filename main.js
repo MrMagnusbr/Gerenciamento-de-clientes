@@ -19,10 +19,9 @@ const openDetailsModal = (client) => {
 
 const closeDetailsModal = () => document.getElementById("detailsModal").classList.remove("active");
 
-let indice = 0;
-
 function uniqueID() {
-    return `id-${indice++}`;
+    return `id-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
 }
 
 const updateClient = (index, client) => {
@@ -144,6 +143,8 @@ const fillFields = (client) => {
     document.getElementById("cpf").value = client.cpf;
     document.getElementById("endereco").value = client.endereco;
     document.getElementById("notas").value = client.notas;
+    document.getElementById("bairro").value = client.bairro;
+    document.getElementById("nascimento").value = client.nascimento;
     document.getElementById("nome").dataset.index = client.index;
 };
 
