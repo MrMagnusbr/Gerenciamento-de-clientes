@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="main.css" />
 
-    <title>CRUD</title>
+    <title>Gerenciamento De Clientes</title>
   </head>
 
   <body>
@@ -26,9 +26,8 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>E-mail</th>
-            <th>Celular</th>
-            <th>Cidade</th>
+            <th>Contato</th>
+            <th>CPF</th>
             <th>Ação</th>
           </tr>
         </thead>
@@ -53,30 +52,22 @@
               />
             </p>
             <p>
-              Email
+              Contato
               <input
-                type="email"
-                id="email"
+                type="text"
+                id="contato"
                 class="modal-field"
-                placeholder="e-mail do Cliente"
+                placeholder="e-mail ou telefone do cliente"
+                required
               />
             </p>
             <p>
-              Celular
+              CEP
               <input
                 type="text"
-                id="celular"
+                id="CEP"
                 class="modal-field"
-                placeholder="Celular do Cliente"
-              />
-            </p>
-            <p>
-              Cidade
-              <input
-                type="text"
-                id="cidade"
-                class="modal-field"
-                placeholder="Cidade do Cliente"
+                placeholder="ex: 39900000"
                 required
               />
             </p>
@@ -86,7 +77,7 @@
                 type="text"
                 id="cpf"
                 class="modal-field"
-                placeholder="CPF do Cliente"
+                placeholder="ex: 273.218.950-25"
                 required
               />
             </p>
@@ -112,19 +103,11 @@
             </p>
             <p>
               Anotações
-              <input
-                type="text"
-                id="notas"
-                class="modal-field"
-              />
+              <input type="text" id="notas" class="modal-field" />
             </p>
             <p>
               Data de Nascimento
-              <input
-                type="date"
-                id="aniversario"
-                class="modal-field"
-              />
+              <input type="date" id="nascimento" class="modal-field" />
             </p>
           </form>
 
@@ -146,12 +129,14 @@
             <p>
               <strong>Nascimento:</strong> <span id="detailNascimento"></span>
             </p>
-            <p>
-              <strong>Cidade/Estado:</strong> <span id="detailCidade"></span>
-            </p>
+            <p><strong>CEP:</strong> <span id="detailCEP"></span></p>
+            <p><strong>Cidade:</strong> <span id="detailCidade"></span></p>
+            <p><strong>Estado:</strong> <span id="detailEstado"></span></p>
+
             <p><strong>CPF:</strong> <span id="detailCpf"></span></p>
             <p><strong>Endereço:</strong> <span id="detailEndereco"></span></p>
-            <p><strong>Bairro:</strong> <span id="detailNotas"></span></p>
+
+            <p><strong>Bairro:</strong> <span id="detailBairro"></span></p>
             <p><strong>Anotações:</strong> <span id="detailNotas"></span></p>
           </div>
           <footer class="modal-footer">
