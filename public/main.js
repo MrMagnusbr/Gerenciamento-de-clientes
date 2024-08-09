@@ -16,8 +16,8 @@ const openDetailsModal = (client) => {
   document.getElementById("detailBairro").textContent = client.bairro;
   document.getElementById("detailEndereco").textContent = client.endereco;
   document.getElementById("detailNotas").textContent = client.notas;
-  document.getElementById("detailCidade").textContent = client.cidade; // Adicionado
-  document.getElementById("detailEstado").textContent = client.estado; // Adicionado
+  document.getElementById("detailCidade").textContent = client.cidade; 
+  document.getElementById("detailEstado").textContent = client.estado; 
   document.getElementById("detailsModal").classList.add("active");
 };
 
@@ -73,7 +73,7 @@ const isValidFields = () => {
   return document.getElementById("form").reportValidity();
 };
 const isValidCPF = (cpf) => {
-  cpf = cpf.replace(/[^\d]+/g, ""); // Remove caracteres não numéricos
+  cpf = cpf.replace(/[^\d]+/g, ""); 
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
 
   let soma = 0,
@@ -103,9 +103,10 @@ const isValidPhone = (phone) => {
 const fetchCityAndState = async (cep) => {
   try {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    if (!response.ok) throw new Error("Erro ao buscar o CEP!");
     const data = await response.json();
     if (data.erro) {
-      alert("CEP inválido!");
+      alert("CEP não encontrado!");
       return false;
     } else {
       document.getElementById("cidade").value = data.localidade;
@@ -113,7 +114,8 @@ const fetchCityAndState = async (cep) => {
       return true;
     }
   } catch (error) {
-    alert("Erro ao buscar o CEP!");
+    console.error("Erro ao buscar o CEP:", error.message);
+    alert("Erro ao buscar o CEP! Tente novamente mais tarde.");
     return false;
   }
 };
@@ -129,13 +131,11 @@ const isValidCEP = async (cep) => {
 
 const validateContact = (contact) => {
   if (/\D/.test(contact)) {
-    // Se contém letras, considere como e-mail
     if (!isValidEmail(contact)) {
       alert("E-mail inválido!");
       return false;
     }
   } else {
-    // Se contém apenas números, considere como telefone
     if (!isValidPhone(contact)) {
       alert("Número de telefone inválido!");
       return false;
@@ -150,48 +150,47 @@ const clearFields = () => {
   document.querySelector(".modal-header>h2").textContent = "Novo Cliente";
 };
 const saveClient = async () => {
-    if (!isValidFields()) return;
+  if (!isValidFields()) return;
 
-    const cpf = document.getElementById("cpf").value;
-    const contato = document.getElementById("contato").value;
-    const cep = document.getElementById("CEP").value;
-  
-    if (!isValidCPF(cpf)) {
-      alert("CPF inválido!");
-      return;
-    }
-  
-    if (!validateContact(contato)) {
-      return;
-    }
-  
-    if (!(await isValidCEP(cep))) {
-      return;
-    }
-  
-    const client = {
-      nome: document.getElementById("nome").value,
-      contato: contato,
-      cep: cep,
-      cidade: document.getElementById("cidade").value,
-      estado: document.getElementById("estado").value,
-      cpf: cpf,
-      endereco: document.getElementById("endereco").value,
-      notas: document.getElementById("notas").value,
-      bairro: document.getElementById("bairro").value,
-      nascimento: document.getElementById("nascimento").value,
-    };
-  
-    const index = document.getElementById("nome").dataset.index;
-    if (index === "new") {
-      createClient(client);
-      closeModal();
-    } else {
-      updateClient(index, client);
-      closeModal();
-    }
+  const cpf = document.getElementById("cpf").value;
+  const contato = document.getElementById("contato").value;
+  const cep = document.getElementById("CEP").value;
+
+  if (!isValidCPF(cpf)) {
+    alert("CPF inválido!");
+    return;
+  }
+
+  if (!validateContact(contato)) {
+    return;
+  }
+
+  if (!(await isValidCEP(cep))) {
+    return;
+  }
+
+  const client = {
+    nome: document.getElementById("nome").value,
+    contato: contato,
+    cep: cep,
+    cidade: document.getElementById("cidade").value,
+    estado: document.getElementById("estado").value,
+    cpf: cpf,
+    endereco: document.getElementById("endereco").value,
+    notas: document.getElementById("notas").value,
+    bairro: document.getElementById("bairro").value,
+    nascimento: document.getElementById("nascimento").value,
+  };
+
+  const index = document.getElementById("nome").dataset.index;
+  if (index === "new") {
+    createClient(client);
+    closeModal();
+  } else {
+    updateClient(index, client);
+    closeModal();
+  }
 };
-
 
 const createRow = (client) => {
   const newRow = document.createElement("tr");
@@ -278,7 +277,7 @@ const showDetails = (id) => {
 const editDelete = (event) => {
   if (event.target.type === "button") {
     const [action, ...idParts] = event.target.id.split("-");
-    const id = idParts.join("-"); // Combine as partes do ID novamente
+    const id = idParts.join("-"); 
     console.log("Ação:", action, "ID:", id);
     if (action === "edit") {
       editClient(id);
@@ -308,7 +307,6 @@ const editDelete = (event) => {
 
 updateTable();
 
-// Eventos
 document
   .getElementById("cadastrarCliente")
   .addEventListener("click", openModal);
